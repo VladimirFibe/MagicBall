@@ -16,20 +16,38 @@ class MagicViewController: UIViewController {
 
   let answerLabel = UILabel()
 
+  let titleLabel: UILabel = {
+    let label = UILabel()
+    label.text = "Шар судьбы"
+    label.textColor = .black
+    label.font = UIFont.systemFont(ofSize: 50, weight: .bold)
+    return label
+  }()
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
+    view.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+    answerLabel.font = UIFont.systemFont(ofSize: 50, weight: .bold)
     answerLabel.text = ""
     view.addSubview(magicView)
     magicView.translatesAutoresizingMaskIntoConstraints = false
     magicView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     magicView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    magicView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75).isActive = true
+    magicView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75).isActive = true
  
     view.addSubview(answerLabel)
     answerLabel.textColor = .black
+    answerLabel.numberOfLines = 0
+    answerLabel.textAlignment = .center
     answerLabel.translatesAutoresizingMaskIntoConstraints = false
     answerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     answerLabel.topAnchor.constraint(equalTo: magicView.bottomAnchor, constant: 50).isActive = true
+    answerLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
+    
+    view.addSubview(titleLabel)
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    titleLabel.bottomAnchor.constraint(equalTo: magicView.topAnchor, constant: -50).isActive = true
   }
   
   override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
